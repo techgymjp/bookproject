@@ -1,0 +1,25 @@
+{% if page_obj.has_other_pages %}
+<ul class="list-unstyled d-flex justify-content-between">
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">&lt;&lt;前へ</a></li>
+    {% else %}
+        <li class="text-muted">&lt;&lt;前へ</li>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">次へ&gt;&gt;</a></li>
+    {% else %}
+        <li class="text-muted">次へ&gt;&gt;</li>
+    {% endif %}
+</ul>
+
+<ul class="pagination">
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}

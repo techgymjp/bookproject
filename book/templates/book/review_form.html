@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}レビュー作成{% endblock title %}
+
+{% block h1 %}レビュー作成{% endblock h1 %}
+
+{% block content %}
+<form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
+    <label>対象書籍</label>
+    <input class="form-control" value="{{ book.title }}" readonly>
+
+    <label>タイトル</label>
+    <input class="form-control" name="title">
+    <label>内容</label>
+    <textarea class="form-control" name="text" rows="4"></textarea>
+    <label>評価</label>
+    <select class="form-control" name="rate">
+        <option value="">選択してください</option>
+        {% for i in rate_range %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    <input type="hidden" name="book" value="{{ book.id }}">
+    <button type="submit" class="btn btn-primary">レビューを投稿</button>
+</form>
+
+{% endblock content %}
