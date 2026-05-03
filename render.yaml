@@ -13,8 +13,8 @@ services:
     startCommand: "python -m gunicorn bookproject.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
-        from: database
-        name: mysitedb
-        property: connectionString
+        fromDatabase:
+          name: mysitedb
+          property: connectionString
       - key: WEB_CONCURRENCY
         value: 4
