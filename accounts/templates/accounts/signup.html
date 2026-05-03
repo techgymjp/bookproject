@@ -7,16 +7,15 @@
  <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
   {% csrf_token %}
   <input type="text" name="username" class="form-control my-4" placeholder="ユーザID">
-    <input type="password" name="password1" class="form-control mt-4" placeholder="パスワード">
-    <input type="password" name="password2" class="form-control mt-4" placeholder="パスワード確認">
-  </form>
+  <input type="password" name="password1" class="form-control mt-4" placeholder="パスワード">
+  <input type="password" name="password2" class="form-control mt-4" placeholder="パスワード確認">
   {% if form.errors %}
-    <div class="alert alert-danger">
-      {% for error in form.errors.values %}
-        {{ error }}
-      {% endfor %}
-    </div>
+  <div class="alert alert-danger mt-3">
+    {% for error in form.errors.values %}
+      {{ error }}
+    {% endfor %}
+  </div>
   {% endif %}
-    <button type="submit" class="btn btn-success mt-4">ユーザ登録する</button>
-  </form>
+  <button type="submit" class="btn btn-success mt-4">ユーザ登録する</button>
+</form>
 {% endblock %}
